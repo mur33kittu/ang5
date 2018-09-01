@@ -1,0 +1,33 @@
+.container-fluid {
+  margin-top: 100px;
+}
+
+.ui-g {
+  border: 1px groove;
+}
+
+.ui-g [class*="ui-g"] {
+  border: 1px groove;
+}
+
+.ui-grid-row {
+  text-align: center;
+}
+
+.ui-grid {
+  margin: 10px 0px;
+}
+
+.ui-grid-row>div {
+  padding: 4px 10px;
+}
+
+.carousel-item {
+  height: 100vh;
+  max-height: 300px;  
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

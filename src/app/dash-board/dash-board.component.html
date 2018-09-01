@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="row-sm-4 p-2" *ngFor="let pcard of pCards">
+      <app-card [pcard]="pcard"></app-card>
+    </div>
+  </div>
+  <div class="row p-2">
+    <div class="col-md-12">
+      <p-carousel headerText="Cars" numVisible="4" [value]="cars">
+        <ng-template let-car pTemplate="item">
+          <div class="ui-grid ui-grid-responsive">
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-12">
+                <img src="assets/showcase/images/demo/car/{{car.brand}}.png" width="60">
+              </div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-6">Vin</div>
+              <div class="ui-grid-col-6">{{car.vin}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-6">Year</div>
+              <div class="ui-grid-col-6">{{car.year}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-6">Color</div>
+              <div class="ui-grid-col-6">{{car.color}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-12">
+                <button type="button" pButton icon="fa-search" (click)="selectCar(car)"></button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
+  <div class="row">
+    <div class="row-sm-4 p-2">
+      <p-chart type="line" [data]="data" width="400px" height="400px" [responsive]="false"></p-chart>
+    </div>
+    <div class="row-sm-8 p-2">
+      <p-listbox [options]="cars" [(ngModel)]="selectedCar" [style]="{'width':'400px'}" [listStyle]="{'max-height':'250px'}">
+        <ng-template let-car pTemplate="item">
+          <div class="ui-helper-clearfix">
+            <img src="assets/showcase/images/demo/car/{{car.label}}.png" style="display:inline-block;margin:5px 0 0 5px" width="48">
+            <span style="float:right;margin:20px 10px 0 0">{{car.value}}</span>
+          </div>
+        </ng-template>
+        <p-footer>
+          Selected: {{selectedCar||'none'}}
+        </p-footer>
+      </p-listbox>
+    </div>
+  </div>
+</div>

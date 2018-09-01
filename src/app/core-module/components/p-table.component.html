@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row" *ngIf="loadTable">
+    <div class="col-md-12">
+      <p-table #pTable [columns]="loadTable.tableColumns" sortMode="multiple" [rowsPerPageOptions]="[10,20,50,100]" [value]="loadTable.tableData"
+        [paginator]="true" [rows]="10" selectionMode="multiple" [metaKeySelection]="true" [(selection)]="selectedRow">
+        <ng-template pTemplate="caption">
+          Total number of Records : {{loadTable.tableData.length}}
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+              {{col.header}}
+              <p-sortIcon [field]="col.field"></p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+          <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
+            <td *ngFor="let col of columns">
+              {{rowData[col.field]}}
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+          <ul>
+            <li *ngFor="let col of selectedRow" style="text-align: left">
+              {{col.vin}}
+            </li>
+          </ul>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

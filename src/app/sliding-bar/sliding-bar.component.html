@@ -1,0 +1,43 @@
+<br/>
+<br/>
+<br/>
+<br/>
+<h3>Filter Options</h3>
+<div class="card bg-primary mb-3">
+  <div class="card-header text-white">
+    Date:
+    <p-calendar [(ngModel)]="rangeDates" selectionMode="range" readonlyInput="true"></p-calendar>
+  </div>
+</div>
+<div class="card bg-primary mb-3">
+  <div class="card-header text-white">
+    Range :
+    <p-slider [(ngModel)]="rangeValues" [style]="{'width':'200px'}" [range]="true"></p-slider>
+  </div>
+</div>
+<div class="card bg-primary mb-3">
+  <div class="card-header text-white">
+    <p-multiSelect [options]="cars" [(ngModel)]="selectedCars2" [panelStyle]="{minWidth:'15em'}">
+      <ng-template let-car pTemplate="item">
+        <img src="assets/showcase/images/demo/car/{{car.label}}.png" style="width:24px;display:inline-block;vertical-align:middle"
+        />
+        <div style="font-size:14px;float:right;margin-top:4px">{{car.label}}</div>
+      </ng-template>
+    </p-multiSelect>
+  </div>
+</div>
+<div class="card bg-primary mb-3">
+  <div class="card-header text-white">
+    <div class="ui-g" style="width:250px;margin-bottom:10px">
+      <div class="ui-g-12">
+        <p-radioButton name="country" value="AMRS" label="Americas" [(ngModel)]="regions" inputId="opt1"></p-radioButton>
+      </div>
+      <div class="ui-g-12">
+        <p-radioButton name="country" value="ASIA" label="Asia" [(ngModel)]="regions" inputId="opt2"></p-radioButton>
+      </div>
+      <div class="ui-g-12">
+        <p-radioButton name="country" value="EUROPE" label="Europe" [(ngModel)]="regions" inputId="opt3"></p-radioButton>
+      </div>
+    </div>
+  </div>
+</div>

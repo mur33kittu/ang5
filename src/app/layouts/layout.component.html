@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top nav-opacity">
+  <a class="navbar-brand" [routerLink]="['/home']">
+    <img src="assets/img/logo.png" style="width:100px;height:50px;" alt="Image cannot be shown this time" />
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive="active" [routerLink]="['/home']">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive="active" [routerLink]="['/about']">About</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Help
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#" routerLinkActive="active" [routerLink]="['/faq']">faq</a>
+          <a class="dropdown-item" href="#" routerLinkActive="active" [routerLink]="['/info']">info</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/dashboard']">DashBoard</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <a href="path/to/shopping/cart" class="btn btn-primary" aria-label="View 3 items in your shopping cart">
+        <i class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i>
+      </a>
+      <a (click)="op.show($event, actualTarget)" class="page-link">{{loginUser.firstName}} {{loginUser.lastName}}</a>
+    </form>
+  </div>
+</nav>
+<main class="main">
+  <div #actualTarget></div>
+  <router-outlet></router-outlet>
+  <toaster-container [toasterconfig]="toasterconfig"></toaster-container>
+  <ng-progress [positionUsing]="'marginLeft'" [minimum]="0.15" [maximum]="1" [speed]="300" [showSpinner]="false" [direction]="'rightToLeftIncreased'"
+    [color]="'blue'" [trickleSpeed]="250" [thick]="false" [ease]="'linear'"></ng-progress>
+  <app-sliding-bar [@slideInOut]="menuState"></app-sliding-bar>
+  <div class="icon-bar" (click)="toggleMenu()">
+    SideBar
+  </div>
+</main>
+<p-overlayPanel #op [showCloseIcon]="true" [dismissable]="false" [style]="{'width':'400px'}">
+  <ul class="list-group" *ngIf="loginUser">
+    <li class="list-group-item">First Name : {{loginUser.firstName}}</li>
+    <li class="list-group-item">Last Name : {{loginUser.lastName}}</li>
+    <li class="list-group-item">Email : {{loginUser.email}}</li>
+    <li class="list-group-item">Role : {{loginUser.roles}}</li>
+    <li class="list-group-item">Uid : {{loginUser.UId}}</li>
+  </ul>
+  <a class="btn btn-primary">Sign Out</a>
+</p-overlayPanel>
